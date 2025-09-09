@@ -1,0 +1,37 @@
+@use 'sass:math';
+@use './typography';
+
+/*
+Converts a pixel value to rem units based on a base font size.
+This function takes a pixel value (without a unit) as input.
+If a unit is provided, it warns the user to use a unitless number.
+
+Usage example:
+.example-class {
+    font-size: rem(32);  // Output: font-size: 2rem;
+}
+*/
+@function rem($pixel) {
+    @if math.is-unitless($pixel) {
+        @return math.div($pixel, math.div(typography.$base-font-size, 1px)) + rem;
+    } @else {
+        @warn 'Use untiless numbers to use the rem() function';
+    }
+}
+
+/*
+Mixin to hide scrollbars across various browsers (Chrome, Firefox, IE, Edge).
+
+Usage Example:
+.example-class {
+    @include mixins.no-scrollbar;
+}
+ */
+@mixin no-scrollbar {
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    -ms-overflow-style: none; // IE and Edge
+    scrollbar-width: none; // Firefox
+}

@@ -1,0 +1,35 @@
+@use "../../theme/colors";
+@use "../../theme/typography";
+
+.header {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    align-items: center;
+
+    svg {
+        height: 1rem;
+        path {
+            fill: colors.$primary
+        }
+    }
+
+    &__left {
+        & > * {
+            display: flex;
+            justify-self: flex-start;
+        }
+    }
+
+    &__right {
+        & > * {
+            display: flex;
+            justify-self: flex-end;
+        }
+    }
+
+    &__title {
+        text-align: center;
+        @include typography.font("lg", 500);
+    }
+}

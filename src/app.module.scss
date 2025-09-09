@@ -1,0 +1,34 @@
+@use "./theme/mixins";
+@use "./theme/colors";
+@use "./theme/spacing";
+@use "./theme/typography";
+
+.drawer {
+    padding-inline: spacing.$container;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 4rem;
+    margin-top: 4rem;
+    padding-bottom: mixins.rem(24);
+
+    text-align: center;
+
+    &__title {
+        @include typography.font("3xl", 700);
+        color: colors.$primary;
+
+        margin-bottom: mixins.rem(12);
+    }
+
+
+    &__subtitle {
+        @include typography.font("sm");
+        color: colors.$secondary;
+
+        margin-bottom: mixins.rem(4);
+    }
+}

@@ -1,0 +1,52 @@
+@use "../../theme/colors";
+@use "../../theme/mixins";
+
+.bottomSheet {
+    &__dragger {
+        position: fixed;
+        inset: 0;
+        z-index: 10;
+        background: linear-gradient(
+            to top,
+            colors.$background 90%,
+            rgba(0, 0, 0, 0) 90%
+        );
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+
+        & > :last-child {
+            flex: 1 1 auto;
+            background: colors.$background;
+        }
+    }
+
+    &__content {
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+
+        border-radius: mixins.rem(20) mixins.rem(20) 0 0;
+        overflow: hidden;
+    }
+
+    &__triger {
+        width: 100%;
+    }
+
+    &__handle {
+        flex: 0 0 auto;
+        padding-top: mixins.rem(24);
+    }
+
+    &__overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 9;
+        background: rgba(0, 0, 0, 0.4);
+        pointer-events: none;
+    }
+}

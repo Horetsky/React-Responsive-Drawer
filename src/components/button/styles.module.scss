@@ -1,0 +1,55 @@
+@use "../../theme/mixins";
+@use "../../theme/colors";
+@use "../../theme/typography";
+
+@mixin active($color) {
+    &:active {
+        background-color: $color;
+        @content;
+    }
+}
+
+@mixin disabled() {
+    &:disabled {
+        opacity: .6;
+        box-shadow: none;
+        pointer-events: none;
+        @content;
+    }
+}
+
+.button {
+    all: unset;
+    cursor: pointer;
+
+    padding-inline: 1rem;
+    box-sizing: border-box;
+    border-radius: mixins.rem(28);
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: .5rem;
+
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+    height: mixins.rem(52);
+
+    color: colors.$foreground;
+
+    background-color: colors.$primary;
+
+    @include active(colors.$primary-highlight);
+    @include disabled;
+
+    span {
+        @include typography.font("base", 400);
+        line-height: 1;
+    }
+
+    svg {
+        max-height: mixins.rem(20);
+        width: mixins.rem(20);
+    }
+}
