@@ -1,4 +1,4 @@
-import { ComponentProps } from "react";
+import type { ComponentProps } from "react";
 
 export const IconArrowLeft = (props: ComponentProps<"svg">) => (
     <svg
